@@ -1,2 +1,2 @@
 # ResumeGen
-A python tool for building Resume
+A python tool for building a Resume
