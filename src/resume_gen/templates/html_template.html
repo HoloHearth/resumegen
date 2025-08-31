@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} - Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0.3in 0.5in 0.5in 0.5in;
+            line-height: 1.4;
+            color: #000;
+            background-color: #fff;
+            font-size: 12px;
+        }
+        h1 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 4px;
+            color: #2c3e50;
+        }
+        .contact {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10.5px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 14px;
+            margin: 12px 0 6px 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2px;
+            color: #2c3e50;
+        }
+        .job-title { font-weight: bold; }
+        .job-period { float: right; font-style: italic; font-size: 10.5px; }
+        ul { margin: 2px 0 6px 16px; padding-left: 0; }
+        li { margin-bottom: 3px; }
+        .education, .skills { font-size: 11px; }
+        a { color: #2c3e50; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <h1>{{ name }}</h1>
+    <div class="contact">
+        <div class="contact-left">
+            <a href="mailto:{{ email }}">{{ email }}</a> | {{ phone }}
+        </div>
+        <div class="contact-right">
+            <a href="{{ github }}" target="_blank">GitHub: {{ github }}</a>
+        </div>
+    </div>
+
+    <h2>Summary</h2>
+    <ul>
+    {% for item in summary %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Skills & Technologies</h2>
+    <div class="skills">
+        {{ skills | join(', ') }}
+    </div>
+
+    <h2>Experience</h2>
+    {% for job in experience %}
+        <section>
+            <div class="experience-header">
+                <span class="job-title">{{ job.title }}</span>
+                <span class="job-period">{{ job.period }}</span>
+            </div>
+            <div><em>{{ job.company }}</em></div>
+            <ul>
+            {% for task in job.tasks %}
+                <li>{{ task }}</li>
+            {% endfor %}
+            </ul>
+        </section>
+    {% endfor %}
+
+    <h2>Education</h2>
+    <div class="education">
+        {% for school in education %}
+            <p><strong>{{ school.name }}</strong></p>
+            <ul>
+            {% for degree in school.degrees %}
+                <li>{{ degree }}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
