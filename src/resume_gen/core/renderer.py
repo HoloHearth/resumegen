@@ -9,6 +9,3 @@ class Render:
         template = self.env.get_template(template_name)
         merged_data = {**context, **kwargs}
         return template.render(merged_data)
-    
-
-    print ('hi there')
