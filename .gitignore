@@ -1,3 +1,15 @@
 .venv
 *.pyc
 __pycache__/
+
+# Except the following
+!rust_utilities/Cargo.toml
+!rust_utilities/src/
+!rust_utilities/src/lib.rs
+
+# Ignore everything inside src except lib.rs/*
+rust_utilities/src/*
+!rust_utilities/src/lib.rs
+# Optional: Ignore target folder
+rust_utilities/target/
+rust_utilities/Cargo.lock
